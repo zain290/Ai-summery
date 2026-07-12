@@ -1,0 +1,410 @@
+.header {
+  --submenu-bg: var(--color-text);
+  --submenu-border: rgba(18, 17, 13, 0.08);
+  --submenu-shadow: 0 24px 64px rgba(18, 17, 13, 0.18);
+  --submenu-divider: rgba(247, 243, 234, 0.16);
+  --submenu-label: rgba(247, 243, 234, 0.56);
+  --submenu-text: var(--color-background);
+  --submenu-hover-bg: transparent;
+  --submenu-hover-opacity: 0.56;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  background: transparent;
+  pointer-events: auto;
+}
+
+.header-dark {
+  --submenu-bg: var(--color-text);
+  --submenu-border: rgba(255, 255, 255, 0.09);
+  --submenu-shadow: 0 24px 64px rgba(0, 0, 0, 0.45);
+  --submenu-divider: rgba(0, 0, 0, 0.12);
+  --submenu-label: rgba(0, 0, 0, 0.5);
+  --submenu-text: var(--color-background);
+  --submenu-hover-bg: transparent;
+}
+
+.nav {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem 3rem;
+  pointer-events: auto;
+}
+
+.brand {
+  font-size: 2rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  user-select: none;
+  transition: color 0.5s;
+  color: var(--color-text);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.toggle-icon {
+  height: 1rem;
+  width: 1rem;
+  object-fit: contain;
+  margin: 0.5rem;
+  transition: opacity 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+.nav-toggle {
+  background: transparent;
+  border: 0;
+  padding: 0;
+  margin: 0 0.5rem;
+  width: 40px;
+  height: 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.25s ease, opacity 0.2s ease;
+}
+
+.nav-toggle:hover { transform: scale(1.06); }
+
+.hm { display: block; }
+
+.hm circle {
+  fill: var(--color-text, currentColor);
+  opacity: 0.6;
+  transition: opacity 0.18s ease;
+}
+
+.nav-toggle:hover .hm circle:nth-child(1),
+.nav-toggle:hover .hm circle:nth-child(3),
+.nav-toggle:hover .hm circle:nth-child(7),
+.nav-toggle:hover .hm circle:nth-child(9),
+.nav-toggle.open .hm circle:nth-child(1),
+.nav-toggle.open .hm circle:nth-child(3),
+.nav-toggle.open .hm circle:nth-child(7),
+.nav-toggle.open .hm circle:nth-child(9) { opacity: 1; }
+
+.nav-toggle.open .hm circle { opacity: 0.9; }
+
+.sub-menu {
+  position: absolute;
+  top: calc(100% + 1px);
+  right: 10px;
+  width: min(17.6rem, calc(100vw - 2rem));
+  border-radius: 1.75rem;
+  border: 1px solid var(--submenu-border);
+  background: var(--submenu-bg);
+  backdrop-filter: blur(24px);
+  box-shadow: var(--submenu-shadow);
+  overflow: hidden;
+  padding: 0;
+  z-index: 60;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(-8px) scale(0.98);
+  transform-origin: top right;
+  transition: opacity 0.24s ease, transform 0.24s ease, visibility 0.24s ease;
+}
+
+.sub-menu.open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateY(0) scale(1);
+}
+
+.sub-menu-shell { padding: 0.95rem 0.7rem 0.65rem; }
+
+.sub-menu-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.18rem;
+}
+
+.sub-menu-divider {
+  height: 1px;
+  background: var(--submenu-divider);
+  margin: 0.45rem 0 0.35rem;
+}
+
+.sub-menu-label {
+  padding: 0 0.7rem;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--submenu-label);
+}
+
+.sub-menu-resource-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  text-align: left;
+  padding: 0.1rem 1rem;
+  font-size: 1.14rem;
+  font-weight: 500;
+  transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease, opacity 0.2s ease;
+  color: var(--submenu-text);
+  text-decoration: none;
+  border-radius: 0.95rem;
+  opacity: 1;
+}
+
+.menu-item:hover {
+  background-color: var(--submenu-hover-bg);
+  transform: translateY(-1px);
+  opacity: var(--submenu-hover-opacity);
+}
+
+.menu-item-active { opacity: 0.56; }
+.menu-item-inactive { opacity: 1; }
+
+.menu-item-secondary {
+  justify-content: flex-start;
+  font-size: 0.88rem;
+  font-weight: 400;
+  opacity: 0.7;
+}
+
+.menu-item-cta {
+  border: 0;
+  background: transparent;
+  font: inherit;
+  cursor: pointer;
+  padding: 0.1rem 1rem;
+  font-size: 1.14rem;
+  font-weight: 500;
+  color: var(--submenu-text);
+  border-radius: 0.95rem;
+  opacity: 1;
+  transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease, opacity 0.2s ease;
+}
+
+@media (max-width: 768px) {
+  .nav { padding: 1.5rem 1rem; }
+  .sub-menu {
+    right: 10px;
+    width: min(17.6rem, calc(100vw - 2rem));
+  }
+  .sub-menu-resource-list { grid-template-columns: 1fr; }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+/* -- Pill button ------------------------------------------------------------ */
+
+.fcta-pill {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  height: 3.2rem;
+  padding: 0 1.18rem;
+  border-radius: 999px;
+  border: 1px solid var(--color-nav-border);
+  cursor: pointer;
+  font-family: var(--sans, "Neue Montreal", system-ui, sans-serif);
+  font-size: 0.94rem;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  background-color: var(--color-text);
+  color: var(--color-background);
+  transition:
+    background-color 0.5s ease,
+    color 0.5s ease,
+    opacity 0.28s ease,
+    transform 0.28s cubic-bezier(0.34, 1.56, 0.64, 1),
+    box-shadow 0.2s ease;
+  white-space: nowrap;
+  pointer-events: auto;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  will-change: transform, opacity;
+}
+
+.fcta-pill:hover {
+  opacity: 0.92;
+  transform: translateY(-2px) scale(1.04);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.18);
+}
+
+.fcta-pill-text {
+  font-weight: 300;
+  letter-spacing: 0.01em;
+  opacity: 0.85;
+}
+
+.fcta-pill-icon {
+  position: relative;
+  width: 1.9rem;
+  height: 1.9rem;
+  flex: 0 0 1.9rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  animation: fcta-icon-breathe 2.6s ease-in-out infinite;
+}
+
+.fcta-icon-core-dot,
+.fcta-icon-core-center,
+.fcta-icon-orbit-dot {
+  display: block;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+.fcta-icon-core-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0.18rem;
+  height: 0.18rem;
+  transform: translate(-50%, -50%);
+  opacity: 1;
+}
+
+.fcta-icon-core-orbit {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0.72rem;
+  height: 0.72rem;
+  margin-top: -0.36rem;
+  margin-left: -0.36rem;
+  animation: fcta-core-orbit-spin 3.5s linear infinite;
+}
+
+.fcta-icon-core-dot {
+  position: absolute;
+  width: 0.18rem;
+  height: 0.18rem;
+  opacity: 1;
+}
+
+.fcta-icon-core-dot-1 {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) translateY(-0.36rem);
+}
+
+.fcta-icon-core-dot-2 {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) translateX(0.36rem);
+}
+
+.fcta-icon-core-dot-3 {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) translateY(0.36rem);
+}
+
+.fcta-icon-core-dot-4 {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) translateX(-0.36rem);
+}
+
+.fcta-icon-orbit {
+  position: absolute;
+  inset: 0;
+  border: 1px solid transparent;
+  border-radius: 50%;
+  animation: fcta-orbit-spin 7.5s linear infinite;
+}
+
+.fcta-icon-orbit-dot {
+  position: absolute;
+  width: 0.18rem;
+  height: 0.18rem;
+  opacity: 1;
+}
+
+.fcta-icon-orbit-dot-1 {
+  top: 0.14rem;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.fcta-icon-orbit-dot-2 {
+  top: 0.4rem;
+  right: 0.16rem;
+}
+
+.fcta-icon-orbit-dot-3 {
+  bottom: 0.42rem;
+  right: 0.14rem;
+}
+
+.fcta-icon-orbit-dot-4 {
+  bottom: 0.12rem;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.fcta-icon-orbit-dot-5 {
+  bottom: 0.42rem;
+  left: 0.14rem;
+}
+
+.fcta-icon-orbit-dot-6 {
+  top: 0.4rem;
+  left: 0.16rem;
+}
+
+.fcta-pill:hover .fcta-pill-icon {
+  animation-duration: 1.7s;
+}
+
+@keyframes fcta-icon-breathe {
+  0%,
+  100% {
+    transform: scale(0.94);
+  }
+  50% {
+    transform: scale(1.08);
+  }
+}
+
+@keyframes fcta-orbit-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes fcta-core-orbit-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fcta-pill-icon,
+  .fcta-icon-core-orbit,
+  .fcta-icon-orbit {
+    animation: none;
+  }
+  .fcta-pill {
+    transition: opacity 0.15s ease, visibility 0.15s;
+  }
+}

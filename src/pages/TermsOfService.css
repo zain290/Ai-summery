@@ -1,0 +1,172 @@
+.terms-container {
+  width: 100%;
+  background-color: var(--color-background);
+  color: var(--color-text);
+  transition: background-color 0.5s ease, color 0.5s ease;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+.terms-hero-section {
+  position: relative;
+  padding: 6rem 1.5rem 4rem;
+  overflow: hidden;
+}
+
+@media (min-width: 768px) {
+  .terms-hero-section {
+    padding: 10rem 3rem 8rem;
+  }
+}
+
+.antigravity-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.max-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.terms-container .hero-title {
+  font-size: 3rem;
+  line-height: 1.1;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .terms-container .hero-title {
+    font-size: 5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .terms-container .hero-title {
+    font-size: 7.5rem;
+  }
+}
+
+.hero-line-1 {
+  color: var(--color-text);
+  text-transform: none;
+  font-size: 1.1em; /* Make the top line slightly larger if it was too small */
+}
+
+.hero-line-2 {
+  color: var(--color-muted);
+  text-transform: none;
+  font-size: 0.8em; /* Make the sub-heading line slightly smaller to emphasize line 1 */
+  background-image: none !important;
+  -webkit-background-clip: initial !important;
+  -webkit-text-fill-color: initial !important;
+  background-clip: initial !important;
+  display: block;
+  opacity: 0.6;
+}
+
+/* Ensure visibility in dark mode */
+html.dark .hero-line-2 {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.terms-content-section {
+  padding: 3rem 1.5rem 4rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+  .terms-content-section {
+    padding: 4rem 3rem 10rem;
+  }
+}
+
+.terms-block {
+  margin-bottom: 2.5rem;
+}
+
+@media (min-width: 768px) {
+  .terms-block {
+    margin-bottom: 4rem;
+  }
+}
+
+/* ── Label: parent wrapper ──────────────────────────────────────────────────── */
+.terms-label {
+  display: block;
+  margin-bottom: 1.5rem;
+  color: var(--color-text);
+  opacity: 0.4;
+  /* No text-transform here — applied per child so numerals stay consistent */
+  line-height: 1;
+}
+
+/* Numeric prefix: "01." — no uppercase, tabular figures for even sizing */
+.terms-label-num {
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum";
+  margin-right: 0.3em;
+  /* Keep numerals at normal case — uppercase distorts their height */
+  text-transform: none;
+}
+
+/* Text part: " Acceptance" — uppercase styling applied only here */
+.terms-label-text {
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.terms-block h2 {
+  font-size: 2rem;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  margin: 0 0 1.5rem;
+}
+
+.terms-text {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  opacity: 0.7;
+  margin: 0;
+}
+
+.terms-text p {
+  margin-bottom: 1.5rem;
+}
+
+.terms-text ul {
+  padding-left: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.terms-text li {
+  margin-bottom: 0.5rem;
+}
+
+.last-updated {
+  font-size: 0.9rem;
+  opacity: 0.5;
+  margin-top: 4rem;
+  text-align: center;
+}

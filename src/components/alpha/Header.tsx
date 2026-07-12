@@ -9,21 +9,20 @@ type NavLinkItem = {
 };
 
 interface HeaderProps {
-  theme?: 'light' | 'dark';
-  onToggleTheme?: () => void;
+  theme: 'light' | 'dark';
+  onToggleTheme: () => void;
 }
 
-export const Header: React.FC<HeaderProps> = ({ theme = 'dark', onToggleTheme }) => {
+const Header: React.FC<HeaderProps> = ({ theme, onToggleTheme }) => {
   const location = useLocation();
   const [menuOpen, setMenuOpen] = useState(false);
-  const brandName = 'sum up';
+  const brandName = 'RezFix';
 
   const moonMaskRef = useRef<HTMLDivElement>(null);
   const navRef = useRef<HTMLElement | null>(null);
 
   const navLinks: NavLinkItem[] = [
     { name: 'Showcase', path: '/' },
-    { name: 'History', path: '/history' },
     { name: 'About Us', path: '/about' },
   ];
 
@@ -52,18 +51,16 @@ export const Header: React.FC<HeaderProps> = ({ theme = 'dark', onToggleTheme })
   return (
     <header className={`header header-${theme}`}>
       <nav ref={navRef} className="nav">
-        <a href="/" className="brand">{brandName}</a>
+        <Link to="/" className="brand">{brandName}</Link>
 
         <div className="controls flex items-center">
-          {onToggleTheme && (
-            <img
-              src={theme === 'dark' ? '/images/moon.png' : '/images/sun.png'}
-              alt="Theme Toggle Icon"
-              className="toggle-icon"
-              onClick={(e) => { e.stopPropagation(); onToggleTheme(); }}
-              role="button"
-            />
-          )}
+          <img
+            src={theme === 'dark' ? '/images/moon.png' : '/images/sun.png'}
+            alt="Theme Toggle Icon"
+            className="toggle-icon"
+            onClick={(e) => { e.stopPropagation(); onToggleTheme(); }}
+            role="button"
+          />
 
           <button
             onClick={() => setMenuOpen(!menuOpen)}
@@ -119,3 +116,5 @@ export const Header: React.FC<HeaderProps> = ({ theme = 'dark', onToggleTheme })
     </header>
   );
 };
+
+export default Header;

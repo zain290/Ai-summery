@@ -3,14 +3,13 @@ import { Link } from 'react-router-dom';
 import ParticleText from './ParticleText';
 
 interface FooterProps {
-  theme?: 'light' | 'dark';
+  theme: 'light' | 'dark';
 }
 
-export const Footer: React.FC<FooterProps> = ({ theme = 'dark' }) => {
-  const [brandName] = useState('sum up');
+const Footer: React.FC<FooterProps> = ({ theme }) => {
+  const [brandName] = useState('RezFix');
   const [navLinks] = useState([
     { name: 'Showcase', path: '/' },
-    { name: 'History', path: '/history' },
     { name: 'About Us', path: '/about' },
     { name: 'Privacy Policy', path: '/privacy-policy' },
     { name: 'Terms of Service', path: '/terms' },
@@ -94,3 +93,5 @@ export const Footer: React.FC<FooterProps> = ({ theme = 'dark' }) => {
     </footer>
   );
 };
+
+export default Footer;

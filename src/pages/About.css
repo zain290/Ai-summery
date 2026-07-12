@@ -1,0 +1,380 @@
+.about-container {
+  width: 100%;
+  background-color: var(--color-background);
+  color: var(--color-text);
+  transition: background-color 0.5s ease, color 0.5s ease;
+  overflow-x: hidden;
+}
+
+.about-hero-section {
+  position: relative;
+  padding: 8rem 1.5rem 6rem;
+  overflow: hidden;
+}
+
+@media (min-width: 768px) {
+  .about-hero-section {
+    padding: 10rem 3rem 8rem;
+  }
+}
+
+.antigravity-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.max-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.about-container .hero-title {
+  font-size: 2.5rem;
+  line-height: 1.15;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+}
+
+@media (min-width: 1024px) {
+  .about-container .hero-title {
+    font-size: 6rem;
+  }
+}
+
+.hero-line-1 {
+  color: var(--color-text);
+  text-transform: none;
+}
+
+.hero-line-2 {
+  color: #12110d80;
+  text-transform: none;
+  background-image: none !important;
+  -webkit-background-clip: initial !important;
+  -webkit-text-fill-color: initial !important;
+  background-clip: initial !important;
+  display: block;
+}
+
+/* Ensure visibility in dark mode */
+html.dark .hero-line-2 {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+/* Products Section (from Approaching.css) */
+.products-section {
+  padding: 14rem 1.5rem 5rem;
+  /* Increased top padding by 2rem */
+  background-color: var(--color-background);
+}
+
+@media (min-width: 768px) {
+  .products-section {
+    padding: 14rem 4rem 6rem;
+  }
+}
+
+.products-header {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-bottom: 5rem;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (min-width: 1024px) {
+  .products-header {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 8rem;
+  }
+}
+
+.products-title {
+  font-size: 2.5rem;
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  margin: 0;
+  flex: 1.2;
+  max-width: 420px;
+}
+
+@media (min-width: 1024px) {
+  .products-title {
+    font-size: 2.5rem;
+  }
+}
+
+.products-content {
+  flex: 1;
+  max-width: 420px;
+  padding-right: 2rem;
+}
+
+.products-description {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  opacity: 0.6;
+  margin: 0;
+  width: 100%;
+}
+
+/* Increase gap between separately revealed paragraphs */
+.products-content>div+div {
+  margin-top: 4rem;
+}
+
+/* Scope/Services Section Styles */
+.scope-section,
+.faq-section {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 6rem 1.5rem;
+  /* Increased top padding by 2rem */
+  box-sizing: border-box;
+}
+
+@media (min-width: 768px) {
+
+  .scope-section,
+  .faq-section {
+    padding: 2rem 4rem 6rem;
+  }
+}
+
+.project-info-label {
+  font-size: 14px;
+  font-weight: 500;
+  text-transform: none !important;
+  letter-spacing: normal;
+  margin-bottom: 1rem;
+  color: #12110d80;
+}
+
+html.dark .project-info-label {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.service,
+.faq-list {
+  width: 100%;
+}
+
+.service-list,
+.faq-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.service-item,
+.faq-item {
+  border-bottom: 1px solid #e5e7eb;
+  cursor: default;
+  transition: all 0.3s ease;
+}
+
+.faq-item {
+  cursor: pointer;
+}
+
+.service-item:last-child,
+.faq-item:last-child {
+  border-bottom: none;
+}
+
+.service-item,
+.faq-question {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 0;
+  height: 36px;
+  transition: padding 0.3s ease, height 0.3s ease;
+}
+
+.item-text {
+  font-size: 20px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  color: var(--color-text);
+  transition: opacity 0.3s ease;
+}
+
+@media (min-width: 768px) {
+  .item-text {
+    font-size: 24px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .item-text {
+    font-size: 28px;
+  }
+}
+
+.item-number {
+  font-size: 20px;
+  font-weight: 700;
+  opacity: 0.2;
+  color: var(--color-text);
+  transition: opacity 0.3s ease;
+}
+
+@media (min-width: 768px) {
+  .item-number {
+    font-size: 24px;
+  }
+}
+
+.service-item:hover,
+.faq-item:hover .faq-question,
+.faq-item.active .faq-question {
+  padding: 1.25rem 0;
+  height: 48px;
+}
+
+.service-item:hover .item-text,
+.service-item:hover .item-number,
+.faq-item:hover .item-text,
+.faq-item:hover .item-number,
+.faq-item.active .item-text,
+.faq-item.active .item-number {
+  opacity: 0.7;
+}
+
+/* FAQ Answer Styles */
+.faq-answer-wrapper {
+  overflow: hidden;
+}
+
+.faq-answer {
+  padding-bottom: 1.5rem;
+  max-width: 60ch;
+}
+
+.faq-answer p {
+  font-size: 16px;
+  line-height: 1.6;
+  font-weight: 500;
+  opacity: 0.5;
+  margin: 0;
+  color: var(--color-text);
+}
+
+@media (min-width: 768px) {
+  .faq-answer p {
+    font-size: 17px;
+  }
+}
+
+/* Image Expand Section (from Services.css) */
+.image-expand-section {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 6rem 1.5rem 4rem;
+  /* Increased top padding by 2rem */
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+@media (min-width: 768px) {
+  .image-expand-section {
+    padding: 6rem 4rem 5rem;
+  }
+}
+
+.image-expand-container {
+  display: flex;
+  gap: 0.75rem;
+  height: 400px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+  .image-expand-container {
+    flex-direction: column;
+    height: auto;
+    gap: 1.5rem;
+  }
+}
+
+.expand-column {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  cursor: pointer;
+  min-width: 0;
+  overflow: hidden;
+}
+
+@media (max-width: 768px) {
+  .expand-column {
+    width: 100% !important;
+    flex: none !important;
+  }
+}
+
+.image-container-inner {
+  width: 100%;
+  height: 100%;
+  min-height: 260px;
+  overflow: hidden;
+  border-radius: 12px;
+  background-color: #f5f5f7;
+  display: block;
+}
+
+.image-container-inner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@media (max-width: 768px) {
+  .image-container-inner {
+    height: clamp(260px, 62vw, 420px);
+  }
+}
+
+.expand-column:hover .image-container-inner img {
+  transform: scale(1.05);
+}
+
+.expand-caption {
+  margin-top: 5px;
+  padding-left: 0.25rem;
+}
+
+.expand-title {
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  color: var(--color-text);
+  opacity: 0.7;
+}

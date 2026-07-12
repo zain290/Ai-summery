@@ -1,0 +1,213 @@
+.lm-root {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.85rem;
+  height: 3.2rem;
+  padding: 0 1.18rem;
+  border: 1px solid var(--color-nav-border);
+  border-radius: 999px;
+  cursor: pointer;
+  font-family: var(--sans, "Neue Montreal", system-ui, sans-serif);
+  font-size: 0.94rem;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  background-color: var(--color-text);
+  color: var(--color-background);
+  white-space: nowrap;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  will-change: transform, opacity, gap, padding;
+  transition:
+    gap 0.45s cubic-bezier(0.34, 1.56, 0.64, 1),
+    padding 0.45s cubic-bezier(0.34, 1.56, 0.64, 1),
+    opacity 0.28s ease,
+    transform 0.28s cubic-bezier(0.34, 1.56, 0.64, 1),
+    box-shadow 0.2s ease;
+  overflow: hidden;
+}
+
+.lm-root.loading {
+  gap: 0;
+  padding: 0 0.65rem;
+  cursor: wait;
+}
+
+.lm-root:hover:not(.loading) {
+  opacity: 0.92;
+  transform: translateY(-2px) scale(1.04);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.18);
+}
+
+.lm-root:disabled {
+  cursor: wait;
+}
+
+.lm-text {
+  transition: opacity 0.3s ease, max-width 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
+  font-weight: 300;
+  letter-spacing: 0.01em;
+  opacity: 0.85;
+  overflow: hidden;
+  white-space: nowrap;
+  max-width: 200px;
+}
+
+.lm-root.loading .lm-text {
+  opacity: 0;
+  max-width: 0;
+}
+
+.lm-icon {
+  position: relative;
+  width: 1.9rem;
+  height: 1.9rem;
+  flex: 0 0 1.9rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  animation: lm-icon-breathe 2.6s ease-in-out infinite;
+}
+
+.lm-icon-core-center,
+.lm-icon-core-dot,
+.lm-icon-orbit-dot {
+  display: block;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+.lm-icon-core-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0.18rem;
+  height: 0.18rem;
+  transform: translate(-50%, -50%);
+  opacity: 1;
+}
+
+.lm-icon-core-orbit {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0.72rem;
+  height: 0.72rem;
+  margin-top: -0.36rem;
+  margin-left: -0.36rem;
+  animation: lm-core-orbit-spin 3.5s linear infinite;
+}
+
+.lm-icon-core-dot {
+  position: absolute;
+  width: 0.18rem;
+  height: 0.18rem;
+  opacity: 1;
+}
+
+.lm-icon-core-dot-1 {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) translateY(-0.36rem);
+}
+
+.lm-icon-core-dot-2 {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) translateX(0.36rem);
+}
+
+.lm-icon-core-dot-3 {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) translateY(0.36rem);
+}
+
+.lm-icon-core-dot-4 {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) translateX(-0.36rem);
+}
+
+.lm-icon-orbit {
+  position: absolute;
+  inset: 0;
+  border: 1px solid transparent;
+  border-radius: 50%;
+  animation: lm-orbit-spin 7.5s linear infinite;
+}
+
+.lm-icon-orbit-dot {
+  position: absolute;
+  width: 0.18rem;
+  height: 0.18rem;
+  opacity: 1;
+}
+
+.lm-icon-orbit-dot-1 {
+  top: 0.14rem;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.lm-icon-orbit-dot-2 {
+  top: 0.4rem;
+  right: 0.16rem;
+}
+
+.lm-icon-orbit-dot-3 {
+  bottom: 0.42rem;
+  right: 0.14rem;
+}
+
+.lm-icon-orbit-dot-4 {
+  bottom: 0.12rem;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.lm-icon-orbit-dot-5 {
+  bottom: 0.42rem;
+  left: 0.14rem;
+}
+
+.lm-icon-orbit-dot-6 {
+  top: 0.4rem;
+  left: 0.16rem;
+}
+
+.lm-root:hover .lm-icon {
+  animation-duration: 1.7s;
+}
+
+@keyframes lm-icon-breathe {
+  0%,
+  100% {
+    transform: scale(0.94);
+  }
+  50% {
+    transform: scale(1.08);
+  }
+}
+
+@keyframes lm-core-orbit-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes lm-orbit-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lm-icon,
+  .lm-icon-core-orbit,
+  .lm-icon-orbit {
+    animation: none;
+  }
+  .lm-root {
+    transition: opacity 0.15s ease;
+  }
+}
