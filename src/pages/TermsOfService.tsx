@@ -3,7 +3,7 @@ import SplitText from '../components/alpha/SplitText';
 import ScrollReveal from '../components/alpha/ScrollReveal';
 import Antigravity from '../components/alpha/Antigravity';
 import { getPage } from '../controllers/apiController';
-import SEO from '../components/alpha/SEO';
+import SEO from '../components/layout/SEO';
 import './TermsOfService.css';
 
 const DEFAULT_PAGE = {
@@ -115,9 +115,9 @@ const TermsOfService: React.FC = () => {
   return (
     <div className="terms-container">
       <SEO 
-        title="sum up | Terms of Service" 
+        title="Terms of Service | sum up" 
         description={`${pageData.hero_line1} - ${pageData.hero_line2}`} 
-        canonicalUrl="https://sum up.app/terms" 
+        canonicalUrl={window.location.origin + '/terms'}
       />
       <section className="terms-hero-section">
         <div className="antigravity-wrapper" style={{ opacity: 0.8 }}>

@@ -3,7 +3,7 @@ import SplitText from '../components/alpha/SplitText';
 import ScrollReveal from '../components/alpha/ScrollReveal';
 import Antigravity from '../components/alpha/Antigravity';
 import { getPage } from '../controllers/apiController';
-import SEO from '../components/alpha/SEO';
+import SEO from '../components/layout/SEO';
 import './PrivacyPolicy.css';
 
 const DEFAULT_PAGE = {
@@ -113,9 +113,9 @@ const PrivacyPolicy: React.FC = () => {
   return (
     <div className="privacy-container">
       <SEO
-        title="sum up | Privacy Policy"
+        title="Privacy Policy | sum up"
         description={`${pageData.hero_line1} - ${pageData.hero_line2}`}
-        canonicalUrl="https://sum up.app/privacy-policy"
+        canonicalUrl={window.location.origin + '/privacy-policy'}
       />
       <section className="privacy-hero-section">
         <div className="antigravity-wrapper" style={{ opacity: 0.8 }}>

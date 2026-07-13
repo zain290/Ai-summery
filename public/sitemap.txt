@@ -1,0 +1,5 @@
+http://localhost:5317/
+http://localhost:5317/history
+http://localhost:5317/about
+http://localhost:5317/privacy-policy
+http://localhost:5317/terms

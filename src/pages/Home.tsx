@@ -3,7 +3,8 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { UploadZone } from '../components/ui/UploadZone'
 import { SummaryOutput } from '../components/SummaryOutput'
 import { summarizeText, uploadFile } from '../services/groqAPI'
-import { DEFAULT_BULLET_COUNT } from '../utils/constants'
+import { DEFAULT_BULLET_COUNT, APP_NAME } from '../utils/constants'
+import SEO from '../components/layout/SEO'
 import type { SummaryFormat, SummarizeResponse } from '../types'
 
 export function Home() {
@@ -49,7 +50,21 @@ export function Home() {
   }, [result])
 
   return (
-    <div className="relative pt-24 bg-background w-full flex flex-col items-center">
+    <>
+      <SEO
+        title={`${APP_NAME} — AI-Powered Text Summarization`}
+        description="Paste text or upload files to get instant AI-powered summaries. Free, private, and fast — powered by Groq AI."
+        canonicalUrl={window.location.origin + '/'}
+        schemaMarkup={JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "WebApplication",
+          "name": APP_NAME,
+          "applicationCategory": "AI Text Summarization",
+          "description": "AI-powered text summarization tool that converts long documents into concise summaries.",
+          "url": window.location.origin + '/'
+        })}
+      />
+      <div className="relative pt-24 bg-background w-full flex flex-col items-center">
       <AnimatePresence mode="wait">
         {result ? (
           <motion.div
@@ -131,5 +146,6 @@ export function Home() {
         )}
       </AnimatePresence>
     </div>
+    </>
   )
 }

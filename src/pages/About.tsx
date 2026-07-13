@@ -5,7 +5,7 @@ import SplitText from '../components/alpha/SplitText';
 import Antigravity from '../components/alpha/Antigravity';
 import ProjectThumbnailSection, { type ProjectThumbnail } from '../components/alpha/ProjectThumbnailSection';
 import { getPage, getProjects } from '../controllers/apiController';
-import SEO from '../components/alpha/SEO';
+import SEO from '../components/layout/SEO';
 import './About.css';
 
 const DEFAULTS = {
@@ -52,9 +52,9 @@ const About: React.FC = () => {
   return (
     <div ref={containerRef} className="about-container">
       <SEO 
-        title="ALPHA | About Us" 
+        title={`About Us | ${pageData.hero_line1}`} 
         description={`${pageData.hero_line1} ${pageData.hero_line2}`} 
-        canonicalUrl="https://alpha.pro/about" 
+        canonicalUrl={window.location.origin + '/about'}
       />
       <section className="about-hero-section">
         <div className="antigravity-wrapper" style={{ opacity: 0.8 }}>

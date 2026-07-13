@@ -3,6 +3,8 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { LoadingSpinner } from '../components/LoadingSpinner'
 import { ErrorAlert } from '../components/ErrorAlert'
 import { getHistory, deleteHistory } from '../services/groqAPI'
+import { APP_NAME } from '../utils/constants'
+import SEO from '../components/layout/SEO'
 import type { HistoryRecord } from '../types'
 
 export function History() {
@@ -44,12 +46,25 @@ export function History() {
 
   if (loading) return (
     <div className="relative pt-24 min-h-screen bg-background w-full flex flex-col items-center justify-center">
+      <SEO
+        title={`Summary History | ${APP_NAME}`}
+        description="View your past summarizations. Browse, review, and manage your AI-generated summaries from Groq AI."
+        canonicalUrl={window.location.origin + '/history'}
+        noindex
+      />
       <LoadingSpinner message="Loading history..." />
     </div>
   )
 
   return (
-    <div className="relative pt-24 bg-background w-full flex flex-col items-center min-h-screen">
+    <>
+      <SEO
+        title={`Summary History | ${APP_NAME}`}
+        description="View your past summarizations. Browse, review, and manage your AI-generated summaries from Groq AI."
+        canonicalUrl={window.location.origin + '/history'}
+        noindex
+      />
+      <div className="relative pt-24 bg-background w-full flex flex-col items-center min-h-screen">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -152,5 +167,6 @@ export function History() {
         )}
       </motion.div>
     </div>
+    </>
   )
 }

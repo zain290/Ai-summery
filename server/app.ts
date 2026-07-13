@@ -28,8 +28,8 @@ export class App {
 
   private registerRoutes() {
     const distPath = resolve(__dirname, '..', 'dist')
-    this.app.use(express.static(distPath))
     this.app.use(routes)
+    this.app.use(express.static(distPath))
     this.app.get('/{*path}', (_req, res) => {
       res.sendFile(resolve(distPath, 'index.html'))
     })
