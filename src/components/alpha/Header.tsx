@@ -22,7 +22,7 @@ const Header: React.FC<HeaderProps> = ({ theme, onToggleTheme }) => {
   const navRef = useRef<HTMLElement | null>(null);
 
   const navLinks: NavLinkItem[] = [
-    { name: 'Showcase', path: '/' },
+    { name: 'Home', path: '/' },
     { name: 'About Us', path: '/about' },
   ];
 

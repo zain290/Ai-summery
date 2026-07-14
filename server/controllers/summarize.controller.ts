@@ -1,6 +1,6 @@
 import type { Request, Response, NextFunction } from 'express'
 import { getDatabase, saveDatabase } from '../db/database'
-import { generateSummary } from '../services/groq.service'
+import { generateSummary, chatWithAI } from '../services/groq.service'
 import { parseFile } from '../services/file-parser.service'
 
 const RATE_LIMIT_PER_HOUR = Number(process.env.RATE_LIMIT_PER_HOUR) || 10
@@ -182,6 +182,23 @@ export async function deleteHistory(_req: Request, res: Response, next: NextFunc
     db.run('DELETE FROM summaries')
     saveDatabase()
     res.json({ success: true, message: 'History cleared' })
+  } catch (err) {
+    next(err)
+  }
+}
+
+export async function chat(req: Request, res: Response, next: NextFunction) {
+  try {
+    const { messages } = req.body
+
+    if (!messages || !Array.isArray(messages) || messages.length === 0) {
+      res.status(400).json({ success: false, error: 'Messages array is required', code: 'INVALID_INPUT' })
+      return
+    }
+
+    const text = await chatWithAI(messages)
+
+    res.json({ content: [{ text }] })
   } catch (err) {
     next(err)
   }

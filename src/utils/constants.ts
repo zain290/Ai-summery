@@ -2,7 +2,6 @@ export const API_BASE = '/api'
 export const APP_NAME = 'AI Text Summariser'
 export const ROUTES = {
   home: '/',
-  history: '/history',
   instructions: '/instructions',
 } as const
 export const MAX_WORD_COUNT = 10000

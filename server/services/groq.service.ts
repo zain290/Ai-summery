@@ -66,3 +66,16 @@ function parseSummary(content: string, format: string): string[] {
     .map((line) => line.replace(/^[-*]\s*/, '').trim())
     .filter((line) => line.length > 0)
 }
+
+export async function chatWithAI(messages: { role: string; content: string }[]): Promise<string> {
+  const response = await getClient().chat.completions.create({
+    model: 'llama-3.3-70b-versatile',
+    messages: messages as any,
+    temperature: 0.5,
+    max_completion_tokens: 1024,
+  })
+
+  const text = response.choices[0]?.message?.content?.trim() || ''
+  if (!text) throw new Error('Empty response from AI')
+  return text
+}

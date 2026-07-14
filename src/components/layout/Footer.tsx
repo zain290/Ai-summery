@@ -9,8 +9,7 @@ interface FooterProps {
 export const Footer: React.FC<FooterProps> = ({ theme = 'dark' }) => {
   const [brandName] = useState('sum up');
   const [navLinks] = useState([
-    { name: 'Showcase', path: '/' },
-    { name: 'History', path: '/history' },
+    { name: 'Home', path: '/' },
     { name: 'About Us', path: '/about' },
     { name: 'Privacy Policy', path: '/privacy-policy' },
     { name: 'Terms of Service', path: '/terms' },

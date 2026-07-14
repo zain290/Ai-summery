@@ -9,7 +9,7 @@ interface FooterProps {
 const Footer: React.FC<FooterProps> = ({ theme }) => {
   const [brandName] = useState('RezFix');
   const [navLinks] = useState([
-    { name: 'Showcase', path: '/' },
+    { name: 'Home', path: '/' },
     { name: 'About Us', path: '/about' },
     { name: 'Privacy Policy', path: '/privacy-policy' },
     { name: 'Terms of Service', path: '/terms' },

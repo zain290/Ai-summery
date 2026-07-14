@@ -1,0 +1,749 @@
+.fcta-root {
+  position: fixed;
+  bottom: 1.25rem;
+  left: 1rem;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  max-width: calc(100vw - 2rem);
+}
+
+.fcta-pill {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  height: 3.2rem;
+  padding: 0 1.18rem;
+  border-radius: 999px;
+  border: 1px solid var(--color-nav-border);
+  cursor: pointer;
+  font-family: var(--sans, "Neue Montreal", system-ui, sans-serif);
+  font-size: 0.94rem;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  background-color: var(--color-text);
+  color: var(--color-background);
+  transition:
+    background-color 0.5s ease,
+    color 0.5s ease,
+    opacity 0.28s ease,
+    transform 0.28s cubic-bezier(0.34, 1.56, 0.64, 1),
+    box-shadow 0.2s ease;
+  white-space: nowrap;
+  pointer-events: auto;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  will-change: transform, opacity;
+}
+
+.fcta-pill:hover {
+  opacity: 0.92;
+  transform: translateY(-2px) scale(1.04);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.18);
+}
+
+.fcta-pill-text {
+  font-weight: 300;
+  letter-spacing: 0.01em;
+  opacity: 0.85;
+}
+
+.fcta-pill-icon {
+  position: relative;
+  width: 1.9rem;
+  height: 1.9rem;
+  flex: 0 0 1.9rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  animation: fcta-icon-breathe 2.6s ease-in-out infinite;
+}
+
+.fcta-icon-core-dot,
+.fcta-icon-core-center,
+.fcta-icon-orbit-dot {
+  display: block;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+.fcta-icon-core-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0.18rem;
+  height: 0.18rem;
+  transform: translate(-50%, -50%);
+  opacity: 1;
+}
+
+.fcta-icon-core-orbit {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0.72rem;
+  height: 0.72rem;
+  margin-top: -0.36rem;
+  margin-left: -0.36rem;
+  animation: fcta-core-orbit-spin 3.5s linear infinite;
+}
+
+.fcta-icon-core-dot {
+  position: absolute;
+  width: 0.18rem;
+  height: 0.18rem;
+  opacity: 1;
+}
+
+.fcta-icon-core-dot-1 {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) translateY(-0.36rem);
+}
+
+.fcta-icon-core-dot-2 {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) translateX(0.36rem);
+}
+
+.fcta-icon-core-dot-3 {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) translateY(0.36rem);
+}
+
+.fcta-icon-core-dot-4 {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) translateX(-0.36rem);
+}
+
+.fcta-icon-orbit {
+  position: absolute;
+  inset: 0;
+  border: 1px solid transparent;
+  border-radius: 50%;
+  animation: fcta-orbit-spin 7.5s linear infinite;
+}
+
+.fcta-icon-orbit-dot {
+  position: absolute;
+  width: 0.18rem;
+  height: 0.18rem;
+  opacity: 1;
+}
+
+.fcta-icon-orbit-dot-1 {
+  top: 0.14rem;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.fcta-icon-orbit-dot-2 {
+  top: 0.4rem;
+  right: 0.16rem;
+}
+
+.fcta-icon-orbit-dot-3 {
+  bottom: 0.42rem;
+  right: 0.14rem;
+}
+
+.fcta-icon-orbit-dot-4 {
+  bottom: 0.12rem;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.fcta-icon-orbit-dot-5 {
+  bottom: 0.42rem;
+  left: 0.14rem;
+}
+
+.fcta-icon-orbit-dot-6 {
+  top: 0.4rem;
+  left: 0.16rem;
+}
+
+.fcta-pill:hover .fcta-pill-icon {
+  animation-duration: 1.7s;
+}
+
+.fcta-open .fcta-pill {
+  opacity: 0;
+  transform: translateY(6px) scale(0.95);
+  pointer-events: none;
+}
+
+.fcta-open .fcta-pill-icon,
+.fcta-open .fcta-icon-core-orbit,
+.fcta-open .fcta-icon-orbit {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  .fcta-pill-icon,
+  .fcta-icon-core-orbit,
+  .fcta-icon-orbit {
+    animation: none;
+  }
+
+  .fcta-pill,
+  .fcta-panel {
+    transition: opacity 0.15s ease, visibility 0.15s;
+  }
+}
+
+.fcta-panel {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 340px;
+  max-width: calc(100vw - 2rem);
+  background-color: var(--color-surface);
+  color: var(--color-text);
+  border: 1px solid var(--color-nav-border);
+  border-radius: 1.4rem;
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+  box-sizing: border-box;
+  transition:
+    background-color 0.5s ease,
+    color 0.5s ease;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(10px) scale(0.96);
+  transform-origin: bottom left;
+  transition:
+    opacity 0.32s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 0.32s cubic-bezier(0.34, 1.4, 0.64, 1),
+    visibility 0.32s,
+    background-color 0.5s ease,
+    color 0.5s ease;
+}
+
+.fcta-open .fcta-panel {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateY(0) scale(1);
+}
+
+.fcta-tabs {
+  display: flex;
+  align-items: center;
+  padding: 1rem 1.4rem 0;
+  gap: 0;
+  border-bottom: 1px solid var(--color-nav-border);
+  justify-content: space-between;
+}
+
+.fcta-tab-group {
+  display: flex;
+  gap: 0;
+}
+
+.fcta-tab {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-family: var(--sans, "Neue Montreal", system-ui, sans-serif);
+  font-size: 0.84rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  text-transform: none;
+  color: var(--color-text);
+  opacity: 0.4;
+  padding: 0 0 0.65rem;
+  margin-right: 1.2rem;
+  border-bottom: 1.5px solid transparent;
+  transition: opacity 0.2s ease, border-color 0.2s ease;
+  white-space: nowrap;
+}
+
+.fcta-tab:last-child {
+  margin-right: 0;
+}
+
+.fcta-tab.fcta-tab-active {
+  opacity: 1;
+  border-bottom-color: var(--color-text);
+}
+
+.fcta-close {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0 0 0.65rem;
+  color: var(--color-text);
+  opacity: 0.4;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.fcta-close:hover {
+  opacity: 1;
+  transform: rotate(90deg);
+}
+
+.fcta-panel-body {
+  padding: 1.1rem 1.4rem 1.2rem;
+}
+
+.fcta-panel-body-active {
+  animation: fcta-pane-enter 0.24s ease;
+}
+
+.fcta-panel-body-shell {
+  overflow: hidden;
+}
+
+.fcta-panel-body-content {
+  width: 100%;
+}
+
+.fcta-panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.fcta-label-large {
+  font-family: var(--sans, "Neue Montreal", system-ui, sans-serif);
+  font-size: 1.15rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--color-text);
+}
+
+.fcta-contact-row {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin-bottom: 0.85rem;
+}
+
+.fcta-muted-label {
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  opacity: 0.45;
+  color: var(--color-text);
+  margin-bottom: 2px;
+}
+
+.fcta-email-link {
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--color-text);
+  text-decoration: none;
+  opacity: 0.85;
+  transition: opacity 0.2s;
+  word-break: break-all;
+}
+
+.fcta-email-link:hover {
+  opacity: 1;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.fcta-divider {
+  height: 1px;
+  background: var(--color-nav-border);
+  margin: 0.6rem 0 0.9rem;
+}
+
+.fcta-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.fcta-field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.fcta-input {
+  font-family: var(--sans, "Neue Montreal", system-ui, sans-serif);
+  font-size: 0.88rem;
+  font-weight: 400;
+  background: transparent;
+  border: 1px solid var(--color-nav-border);
+  border-radius: 0.65rem;
+  padding: 0.55rem 0.75rem;
+  color: var(--color-text);
+  outline: none;
+  transition: border-color 0.2s ease;
+  opacity: 0.9;
+  resize: none;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.fcta-input::placeholder {
+  opacity: 0.35;
+  color: var(--color-text);
+}
+
+.fcta-input:focus {
+  opacity: 1;
+  border-color: var(--color-text);
+  box-shadow: 0 0 0 2px var(--color-nav-border);
+}
+
+.fcta-textarea {
+  min-height: 72px;
+  line-height: 1.5;
+}
+
+.fcta-submit {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  margin-top: 0.3rem;
+  padding: 0.6rem 1rem;
+  border-radius: 0.65rem;
+  border: none;
+  cursor: pointer;
+  font-family: var(--sans, "Neue Montreal", system-ui, sans-serif);
+  font-size: 0.88rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  background-color: var(--color-text);
+  color: var(--color-background);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.fcta-submit:hover:not(:disabled) {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+
+.fcta-submit:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.fcta-spinner {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border: 2px solid var(--color-background);
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: fcta-spin 0.7s linear infinite;
+}
+
+.fcta-spinner-chat {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border: 1.5px solid var(--color-text);
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: fcta-spin 0.7s linear infinite;
+  opacity: 0.5;
+}
+
+@keyframes fcta-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes fcta-icon-breathe {
+
+  0%,
+  100% {
+    transform: scale(0.94);
+  }
+
+  50% {
+    transform: scale(1.08);
+  }
+}
+
+@keyframes fcta-orbit-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes fcta-core-orbit-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes fcta-pane-enter {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fcta-success {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0.6rem 0;
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--color-text);
+  opacity: 0.85;
+}
+
+.fcta-chat-wrap {
+  display: flex;
+  flex-direction: column;
+  height: 460px;
+}
+
+.fcta-chat-messages {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  padding-right: 8px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-nav-border) transparent;
+}
+
+.fcta-chat-messages::-webkit-scrollbar {
+  width: 3px;
+}
+
+.fcta-chat-messages::-webkit-scrollbar-thumb {
+  background: var(--color-nav-border);
+  border-radius: 99px;
+}
+
+.fcta-msg-agent {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  align-self: flex-start;
+  max-width: 90%;
+  padding: 0.7rem 0.85rem;
+  background: var(--color-nav-border);
+  border-radius: 1rem 1rem 1rem 0.2rem;
+}
+
+.fcta-msg-agent-name {
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: none;
+  opacity: 0.45;
+  color: var(--color-text);
+}
+
+.fcta-msg-agent-text {
+  font-size: 0.84rem;
+  font-weight: 400;
+  line-height: 1.55;
+  color: var(--color-text);
+  opacity: 0.9;
+}
+
+.fcta-msg-user {
+  align-self: flex-end;
+  max-width: 85%;
+  background: var(--color-text);
+  border-radius: 1rem 1rem 0.2rem 1rem;
+  padding: 0.5rem 0.85rem;
+}
+
+.fcta-msg-user-text {
+  font-size: 0.84rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--color-background);
+}
+
+.fcta-typing {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 8px;
+  align-self: flex-start;
+}
+
+.fcta-typing span {
+  display: block;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--color-text);
+  opacity: 0.3;
+  animation: fcta-bounce 1.2s ease-in-out infinite;
+}
+
+.fcta-typing span:nth-child(2) {
+  animation-delay: 0.18s;
+}
+
+.fcta-typing span:nth-child(3) {
+  animation-delay: 0.36s;
+}
+
+@keyframes fcta-bounce {
+
+  0%,
+  80%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.3;
+  }
+
+  40% {
+    transform: translateY(-4px);
+    opacity: 0.6;
+  }
+}
+
+.fcta-suggestions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  align-self: flex-start;
+}
+
+.fcta-suggestions-shell {
+  align-self: flex-start;
+  width: 100%;
+  margin-top: 0.6rem;
+  padding: 0.75rem;
+  background: var(--color-nav-border);
+  opacity: 0.8;
+  border-radius: 1rem;
+  box-sizing: border-box;
+}
+
+.fcta-suggestions-title {
+  display: block;
+  margin-bottom: 0.55rem;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: var(--color-text);
+  opacity: 0.5;
+  text-transform: none;
+}
+
+.fcta-suggestion-chip {
+  background: var(--color-surface);
+  border: 1px solid var(--color-nav-border);
+  border-radius: 0.9rem;
+  padding: 0.45rem 0.72rem;
+  font-family: var(--sans, "Neue Montreal", system-ui, sans-serif);
+  font-size: 0.76rem;
+  font-weight: 400;
+  color: var(--color-text);
+  opacity: 0.85;
+  cursor: pointer;
+  transition: opacity 0.18s ease, background 0.18s ease, border-color 0.18s ease, transform 0.18s ease;
+  white-space: normal;
+  text-align: left;
+  line-height: 1.35;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.fcta-suggestion-chip:hover {
+  opacity: 1;
+  background: var(--color-surface);
+  border-color: var(--color-text);
+  transform: translateY(-1px);
+}
+
+.fcta-chat-input-row {
+  display: flex;
+  align-items: flex-end;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+  padding-top: 0.65rem;
+  border-top: 1px solid var(--color-nav-border);
+}
+
+.fcta-chat-input {
+  flex: 1;
+  font-family: var(--sans, "Neue Montreal", system-ui, sans-serif);
+  font-size: 0.84rem;
+  font-weight: 400;
+  background: var(--color-nav-border);
+  border: 1px solid transparent;
+  border-radius: 0.75rem;
+  padding: 0.5rem 0.75rem;
+  color: var(--color-text);
+  outline: none;
+  resize: none;
+  line-height: 1.4;
+  max-height: 80px;
+  overflow-y: auto;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.fcta-chat-input::placeholder {
+  opacity: 0.35;
+  color: var(--color-text);
+}
+
+.fcta-chat-input:focus {
+  border-color: var(--color-text);
+  background: var(--color-surface);
+}
+
+.fcta-chat-send {
+  flex-shrink: 0;
+  width: 2.2rem;
+  height: 2.2rem;
+  border-radius: 50%;
+  background: var(--color-text);
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-background);
+  transition: opacity 0.18s ease, transform 0.18s ease;
+}
+
+.fcta-chat-send:hover:not(:disabled) {
+  opacity: 0.9;
+  transform: scale(1.05);
+}
+
+.fcta-chat-send:disabled {
+  opacity: 0.2;
+  cursor: not-allowed;
+}
+
+@media (max-width: 480px) {
+  .fcta-root {
+    bottom: 1rem;
+    left: 1rem;
+    max-width: calc(100vw - 2rem);
+  }
+
+  .fcta-panel {
+    width: calc(100vw - 2rem);
+  }
+}

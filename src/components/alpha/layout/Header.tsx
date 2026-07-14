@@ -12,7 +12,7 @@ export function Header() {
         </Link>
 
         <nav className="hidden lg:flex items-center gap-6">
-          <Link to="/" className="text-muted hover:text-text transition-colors">Showcase</Link>
+          <Link to="/" className="text-muted hover:text-text transition-colors">Home</Link>
           <Link to="/create" className="text-muted hover:text-text transition-colors">Create</Link>
           <Link to="/gallery" className="text-muted hover:text-text transition-colors">Gallery</Link>
         </nav>
@@ -31,7 +31,7 @@ export function Header() {
       {menuOpen && (
         <div className="lg:hidden border-t border-nav-border bg-background">
           <nav className="flex flex-col p-4 gap-4">
-            <Link to="/" className="text-muted hover:text-text" onClick={() => setMenuOpen(false)}>Showcase</Link>
+            <Link to="/" className="text-muted hover:text-text" onClick={() => setMenuOpen(false)}>Home</Link>
             <Link to="/create" className="text-muted hover:text-text" onClick={() => setMenuOpen(false)}>Create</Link>
             <Link to="/gallery" className="text-muted hover:text-text" onClick={() => setMenuOpen(false)}>Gallery</Link>
           </nav>

@@ -22,8 +22,7 @@ export const Header: React.FC<HeaderProps> = ({ theme = 'dark', onToggleTheme })
   const navRef = useRef<HTMLElement | null>(null);
 
   const navLinks: NavLinkItem[] = [
-    { name: 'Showcase', path: '/' },
-    { name: 'History', path: '/history' },
+    { name: 'Home', path: '/' },
     { name: 'About Us', path: '/about' },
   ];
 
